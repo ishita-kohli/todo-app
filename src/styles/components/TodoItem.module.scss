@@ -1,0 +1,61 @@
+@use "../abstracts";
+
+.TodoItem {
+  padding: 1.5rem 2rem;
+
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  grid-column-gap: 2rem;
+  align-items: center;
+  user-select: none;
+
+  &___dark {
+    background-color: abstracts.$clr-surface-dark;
+    color: abstracts.$clr-text-dark;
+  }
+
+  &___light {
+    background-color: abstracts.$clr-surface-light;
+    color: abstracts.$clr-text-light;
+  }
+
+  &___light &_name___complete {
+    color: abstracts.$clr-text-muted-light;
+  }
+
+  &___dark &_name___complete {
+    color: abstracts.$clr-text-muted-dark;
+  }
+
+  &_check {
+    cursor: pointer;
+  }
+
+  &_name {
+    font-size: abstracts.$font-size;
+    cursor: default;
+
+    &___complete {
+      text-decoration: line-through;
+    }
+  }
+
+  &_delete {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.4rem;
+    cursor: pointer;
+  }
+
+  @media only screen and (min-width: 37.5rem) {
+    &_delete {
+      display: none;
+      visibility: hidden;
+    }
+
+    &:hover &_delete {
+      display: block;
+      visibility: visible;
+    }
+  }
+}

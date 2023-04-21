@@ -1,0 +1,73 @@
+@use "../abstracts";
+
+.App {
+  &_container {
+    display: grid;
+    grid-template-columns:
+      minmax(3rem, 1fr) [center-start] minmax(min-content, 54rem)
+      [center-end] minmax(3rem, 1fr);
+  }
+
+  grid-column: center-start / center-end;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 25%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    z-index: -1;
+
+    @media only screen and (min-width: 37.5rem) {
+      height: 30%;
+    }
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 75%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    @media only screen and (min-width: 37.5rem) {
+      height: 70%;
+    }
+  }
+
+  &___dark {
+    color: abstracts.$clr-text-dark;
+
+    &::before {
+      background-image: url("/bg-mobile-dark.jpg");
+
+      @media only screen and (min-width: 37.5rem) {
+        background-image: url("/bg-desktop-dark.jpg");
+      }
+    }
+
+    &::after {
+      background-color: abstracts.$clr-background-dark;
+    }
+  }
+
+  &___light {
+    color: abstracts.$clr-text-light;
+
+    &::before {
+      background-image: url("/bg-mobile-light.jpg");
+
+      @media only screen and (min-width: 37.5rem) {
+        background-image: url("/bg-desktop-light.jpg");
+      }
+    }
+
+    &::after {
+      background-color: abstracts.$clr-background-light;
+    }
+  }
+}
